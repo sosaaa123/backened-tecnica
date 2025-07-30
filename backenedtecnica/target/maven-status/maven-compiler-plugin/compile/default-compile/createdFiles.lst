@@ -1,0 +1,8 @@
+com\tecnica\Administrador.class
+com\tecnica\Conexion\ConexionMd.class
+com\tecnica\Conexion\ConexionCloud.class
+com\tecnica\Controller\Controller.class
+com\tecnica\Servicio\Servicio.class
+com\tecnica\Modelos\Publicacion.class
+com\tecnica\Repositorio\Repositorio.class
+com\tecnica\Main.class

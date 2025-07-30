@@ -52,7 +52,17 @@ public class Main {
 
 
         Javalin app = Javalin.create().start(8081);
+
+        Javalin app1 = Javalin.create(config -> {
+                    config.bundledPlugins.enableCors(cors -> {
+                    cors.addRule(it -> {
+                    it.anyHost(); ///Cuando este el frontened pasarlo solo al front
+                        });
+                    });
+                });
+
         controlador.rutas(app);
+        controlador.rutas(app1);
 
 
 

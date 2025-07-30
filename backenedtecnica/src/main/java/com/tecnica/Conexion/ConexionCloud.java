@@ -72,8 +72,6 @@ public class ConexionCloud {
             System.out.println(e);
         }
 
-       
-
         
     }
 }

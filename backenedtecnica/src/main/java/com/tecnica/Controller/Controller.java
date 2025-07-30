@@ -72,7 +72,7 @@ public class Controller{
                 ///Le escribo los datos
                 arch.content().transferTo(new FileOutputStream(temp));
                 ///Ver como borrarlos
-                FileOutputStream x = new FileOutputStream(temp);
+                ///FileOutputStream x = new FileOutputStream(temp);
                 
                 media.add(temp);
 
