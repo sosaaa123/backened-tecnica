@@ -64,10 +64,9 @@ public class Main {
         });
 
         app.options("/*", ctx -> {
-        ctx.status(204); 
+            ctx.status(204); 
         });
 
-controlador.rutas(app);
 
 
 
