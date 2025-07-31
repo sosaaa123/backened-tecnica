@@ -12,6 +12,8 @@ import com.tecnica.Modelos.Publicacion;
 
 import io.javalin.Javalin;
 
+import io.javalin.http.HandlerType;
+
 public class Main {
     public static void main(String[] args) {
         ///Creo conexiones
@@ -54,37 +56,25 @@ public class Main {
         ////pruebo esto a ver q onda pq no entiendo pq no me acepta los cors
         int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8081"));
 
+       
+
         Javalin app = Javalin.create().start(port);
 
-        ///Middleware CORS (no con javalin, probar esto)
+        // Middleware CORS
+        app.before(ctx -> {
+            ctx.header("Access-Control-Allow-Origin", "*");
+            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+            if (ctx.method() == HandlerType.OPTIONS) {
+                ctx.status(204).result(""); // Respuesta preflight vacía
+            }
+        });
+
+        controlador.rutas(app);
+
+
         
-        app.before(ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "*");
-            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-        });
-
-
-        app.options("{path...}", ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "*");
-            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-            ctx.status(200);
-        });
-
-
-
-        app.before(ctx -> {
-            if (ctx.method().equals("OPTIONS")) {
-                ctx.status(200);
-                ctx.result("");
-                ctx.header("Access-Control-Allow-Origin", "*");
-                ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-                ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-            }   
-        });
-
-
 
 
         controlador.rutas(app);
