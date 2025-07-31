@@ -54,13 +54,21 @@ public class Main {
         ////pruebo esto a ver q onda pq no entiendo pq no me acepta los cors
         int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8081"));
 
-        Javalin app = Javalin.create(config -> {
+        Javalin app = Javalin.create(config -> {}).start(port);
 
-                config.bundledPlugins.enableCors(cors -> {
-                cors.addRule(rule -> rule.anyHost());
-                
-            });
-        }).start(port);
+        ///Pongo los cors manualmente, con los de la documentacion nueva de javalin no me envia los headers
+        app.before(ctx -> {
+            ctx.header("Access-Control-Allow-Origin", "*");
+            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        });
+
+        app.options("/*", ctx -> {
+        ctx.status(204); 
+        });
+
+controlador.rutas(app);
+
 
 
         controlador.rutas(app);
