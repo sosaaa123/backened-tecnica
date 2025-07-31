@@ -59,7 +59,10 @@ public class Main {
 
        
 
-        Javalin app = Javalin.create().start(port);
+        Javalin app = Javalin.create(
+            config -> {
+                config.http.prefer405over404 = true;
+                }).start(port);
 
         // Middleware CORS
         app.before(ctx -> {
