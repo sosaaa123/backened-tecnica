@@ -54,16 +54,23 @@ public class Main {
         ////pruebo esto a ver q onda pq no entiendo pq no me acepta los cors
         int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8081"));
 
-        Javalin app = Javalin.create(config -> {
-            config.bundledPlugins.enableCors(cors -> {
-            cors.addRule(it -> {
-                it.allowHost("http://localhost:5173");
-                });
-            });
-        }).start(port);
+        Javalin app = Javalin.create().start(port);
+
+        ///Middleware CORS (no con javalin, probar esto)
+        app.before(ctx -> {
+            ctx.header("Access-Control-Allow-Origin", "*"); // o poner "http://localhost:5173" si preferís
+            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        });
+
+        ///Para evitar error con preflight OPTIONS
+        app.options("/*", ctx -> {
+            ctx.status(200);
+        });
 
 
         controlador.rutas(app);
+
 
 
 
