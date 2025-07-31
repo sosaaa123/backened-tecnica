@@ -65,13 +65,13 @@ public class Main {
         });
 
 
-        app.options("/*", ctx -> {
+        app.options("{path...}", ctx -> {
             ctx.header("Access-Control-Allow-Origin", "*");
             ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
             ctx.status(200);
-            ctx.result("");
         });
+
 
 
         app.before(ctx -> {
