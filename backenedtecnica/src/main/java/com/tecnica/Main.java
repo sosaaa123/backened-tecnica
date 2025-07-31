@@ -66,15 +66,14 @@ public class Main {
             ctx.header("Access-Control-Allow-Origin", "*");
             ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-            ctx.header("Access-Control-Max-Age", "86400");
 
-            if (ctx.method() == HandlerType.OPTIONS) {
+            if (ctx.method() == io.javalin.http.HandlerType.OPTIONS) {
                 ctx.status(204).result("");
-                ctx.header("Content-Length", "0");
             }
         });
 
         app.options("{path...}", ctx -> {
+            System.out.println("OPTIONS recibido para ruta: " + ctx.path());
             ctx.header("Access-Control-Allow-Origin", "*");
             ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
