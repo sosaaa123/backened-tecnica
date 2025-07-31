@@ -57,26 +57,37 @@ public class Main {
         Javalin app = Javalin.create().start(port);
 
         ///Middleware CORS (no con javalin, probar esto)
+        
         app.before(ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "*"); // o poner "http://localhost:5173" si preferís
+            ctx.header("Access-Control-Allow-Origin", "*");
             ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
         });
 
-        
+
         app.options("/*", ctx -> {
             ctx.header("Access-Control-Allow-Origin", "*");
             ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
             ctx.status(200);
+            ctx.result("");
         });
 
 
+        app.before(ctx -> {
+            if (ctx.method().equals("OPTIONS")) {
+                ctx.status(200);
+                ctx.result("");
+                ctx.header("Access-Control-Allow-Origin", "*");
+                ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            }   
+        });
+
+
+
+
         controlador.rutas(app);
-
-
-
-
 
 
 
