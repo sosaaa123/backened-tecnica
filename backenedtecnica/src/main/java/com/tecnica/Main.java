@@ -57,7 +57,7 @@ public class Main {
         Javalin app = Javalin.create(config -> {
             config.bundledPlugins.enableCors(cors -> {
             cors.addRule(it -> {
-                it.allowHost("http://localhost:5173/");
+                it.allowHost("http://localhost:5173");
                 });
             });
         }).start(port);
