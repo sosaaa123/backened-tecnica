@@ -59,37 +59,15 @@ public class Main {
 
        
 
-        Javalin app = Javalin.create(
-            config -> {
-                config.http.prefer405over404 = true;
-                }).start(port);
+        Javalin app = Javalin.create(config -> {
+                config.bundledPlugins.enableCors(cors -> {
+                    cors.addRule(it -> {
+                    it.allowHost("example.com", "javalin.io");
+                });
+            });
+        }).start(port);
 
-        // Middleware CORS
-        app.before(ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "*");
-            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-            if (ctx.method() == io.javalin.http.HandlerType.OPTIONS) {
-                ctx.status(204).result("");
-            }
-        });
-
-        app.options("{path...}", ctx -> {
-            System.out.println("OPTIONS recibido para ruta: " + ctx.path());
-            ctx.header("Access-Control-Allow-Origin", "*");
-            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-            ctx.status(204).result("");
-        });
-
-        app.options("/publicaciones", ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "*");
-            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-            ctx.status(204).result("");
-        });
-
+        
 
         controlador.rutas(app);
 
