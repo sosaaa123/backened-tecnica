@@ -51,10 +51,14 @@ public class Main {
          */
 
 
+        ////pruebo esto a ver q onda pq no entiendo pq no me acepta los cors
         int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8081"));
+
         Javalin app = Javalin.create(config -> {
-            config.bundledPlugins.enableCors(cors -> {
-            cors.addRule(rule -> rule.anyHost());
+
+                config.bundledPlugins.enableCors(cors -> {
+                cors.addRule(rule -> rule.anyHost());
+                
             });
         }).start(port);
 
