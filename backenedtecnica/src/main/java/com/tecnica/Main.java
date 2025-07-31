@@ -51,18 +51,17 @@ public class Main {
          */
 
 
+        int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8081"));
         Javalin app = Javalin.create(config -> {
-                        config.bundledPlugins.enableCors(cors -> {
-                        cors.addRule(it -> {
-                        it.anyHost(); ///Ojo esto
-                });
-             });
-        }).start(8081);
-
-        controlador.rutas(app);
+            config.bundledPlugins.enableCors(cors -> {
+            cors.addRule(rule -> rule.anyHost());
+            });
+        }).start(port);
 
 
         controlador.rutas(app);
+
+
 
 
 
