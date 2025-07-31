@@ -59,7 +59,7 @@ public class Main {
 
        
 
-       Javalin app = Javalin.create().start(port);
+        Javalin app = Javalin.create().start(port);
 
         // Middleware CORS
         app.before(ctx -> {
@@ -79,6 +79,14 @@ public class Main {
             ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
             ctx.status(204).result("");
         });
+
+        app.options("/publicaciones", ctx -> {
+            ctx.header("Access-Control-Allow-Origin", "*");
+            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            ctx.status(204).result("");
+        });
+
 
         controlador.rutas(app);
 
