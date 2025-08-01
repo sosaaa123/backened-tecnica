@@ -12,8 +12,7 @@ import com.tecnica.Modelos.Publicacion;
 
 import io.javalin.Javalin;
 
-import io.javalin.http.HandlerType;
-import io.javalin.plugin.bundled.CorsPlugin;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -55,7 +54,7 @@ public class Main {
 
 
         ////pruebo esto a ver q onda pq no entiendo pq no me acepta los cors
-        int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8081"));
+        ///int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8081"));
 
        
 
@@ -65,7 +64,7 @@ public class Main {
                     it.anyHost();
                 });
             });
-        }).start(port);
+        }).start(8081);
 
         
 
