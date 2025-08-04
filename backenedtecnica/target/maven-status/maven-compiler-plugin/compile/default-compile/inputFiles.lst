@@ -1,8 +1,12 @@
-C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Administrador.java
 C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Conexion\ConexionCloud.java
 C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Conexion\ConexionMd.java
 C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Controller\Controller.java
+C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Controller\ControllerUser.java
 C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Main.java
 C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Modelos\Publicacion.java
+C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Modelos\Usuario.java
 C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Repositorio\Repositorio.java
+C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Repositorio\UserRep.java
 C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Servicio\Servicio.java
+C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\Servicio\UserService.java
+C:\Users\Lautaro\Desktop\backenedTecnica\backenedtecnica\src\main\java\com\tecnica\TokenManager\TokenManager.java

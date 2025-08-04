@@ -1,8 +1,12 @@
-com\tecnica\Administrador.class
+com\tecnica\Modelos\Usuario.class
 com\tecnica\Conexion\ConexionMd.class
+com\tecnica\TokenManager\TokenManager.class
 com\tecnica\Conexion\ConexionCloud.class
+com\tecnica\Controller\ControllerUser.class
+com\tecnica\Modelos\Publicacion.class
 com\tecnica\Controller\Controller.class
 com\tecnica\Servicio\Servicio.class
-com\tecnica\Modelos\Publicacion.class
+com\tecnica\Servicio\UserService.class
+com\tecnica\Repositorio\UserRep.class
 com\tecnica\Repositorio\Repositorio.class
 com\tecnica\Main.class

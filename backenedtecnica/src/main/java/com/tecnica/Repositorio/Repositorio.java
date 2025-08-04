@@ -65,13 +65,13 @@ public class Repositorio {
                     media = new ArrayList<>();
                 }
 
-            String fecha = d.getString("Fecha");
-            String hora = d.getString("Hora");
-            String tipo = d.getString("Tipo");
-            String duracion = d.getString("Duracion");
+                String fecha = d.getString("Fecha");
+                String hora = d.getString("Hora");
+                String tipo = d.getString("Tipo");
+                String duracion = d.getString("Duracion");
             
-            Publicacion pub = new Publicacion(id, titulo, contenido, media, fecha, hora, tipo, duracion); 
-            publicaciones.add(pub);
+                Publicacion pub = new Publicacion(id, titulo, contenido, media, fecha, hora, tipo, duracion); 
+                publicaciones.add(pub);
         }
 
         return publicaciones;
@@ -114,8 +114,8 @@ public class Repositorio {
 
     public Publicacion obtPublxId(String pubId){
 
-        ObjectId idOb = new ObjectId(pubId);
-        Bson filtro = Filters.eq("_id", idOb);
+        ObjectId id_Ob = new ObjectId(pubId);
+        Bson filtro = Filters.eq("_id", id_Ob);
 
         Document d = coleccion.find(filtro).first();
 
@@ -139,6 +139,8 @@ public class Repositorio {
         return pub;
 
     }
+
+    
 
 
     

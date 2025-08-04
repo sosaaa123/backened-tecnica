@@ -3,17 +3,25 @@ package com.tecnica;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jetty.http.HttpTokens.Token;
+
 import com.tecnica.Conexion.ConexionCloud;
 import com.tecnica.Conexion.ConexionMd;
-import com.tecnica.Repositorio.Repositorio;
-import com.tecnica.Servicio.Servicio;
-import com.tecnica.Controller.Controller;
-import com.tecnica.Modelos.Publicacion;
+import com.tecnica.Repositorio.*;
+import com.tecnica.Servicio.*;
+import com.tecnica.Controller.*;
+import com.tecnica.Modelos.*;
+import com.tecnica.TokenManager.TokenManager;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import io.javalin.Javalin;
 
+////3/8 Cosas q me faltan:
 
-
+///. Terminar el controller de usuarios (definiendo rutas y headers del token)
+///. Revisar el controller de usuario y borrar los archivos temporales
+///. Repasar los controllers, implementar en todos ctx.status().result() dependiendo el caso
+///. Capaz despues borro el metodo actualizar contraseña, agregarle mas metodos de seguridad o hacerlo un metodo aparte
 public class Main {
     public static void main(String[] args) {
         ///Creo conexiones
@@ -23,6 +31,23 @@ public class Main {
         Repositorio repositorio = new Repositorio(db.getDatabase(), "publicaciones");
         Servicio servicio =  new Servicio(repositorio, cloudinary);
         Controller controlador = new Controller(servicio);
+
+        UserRep userRep = new UserRep(db.getDatabase(), "usuarios");
+        ///No se si es el mejor lugar para poner la secret_key(preguntar a algun profe, sino la paso en el constructor en su clase)
+        Dotenv dotenv = Dotenv.load();
+        String tokenKey  = dotenv.get("SECRET_KEY");
+
+        TokenManager tokenManager = new TokenManager(tokenKey);
+        UserService userService = new UserService(userRep, tokenManager);
+        ControllerUser controllerUser = new ControllerUser(userService);
+
+        
+        ///Usuario usuarioPrueba = new Usuario("Lautaro", "Sosa", "lautasosita097@gmail.com", "panconqueso12");
+        ///userRep.crear(usuarioPrueba);
+        ///userRep.actualizar("Apellido", "68902742078425245974e5e4", "Duarte");
+        //userService.crearUsuario(usuarioPrueba);
+        ///userService.borrarUser("68902742078425245974e5e4");
+
         
        
          /*
@@ -69,6 +94,7 @@ public class Main {
         
 
         controlador.rutas(app);
+        controllerUser.rutas(app);
 
     
 

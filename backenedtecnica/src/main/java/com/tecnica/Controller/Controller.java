@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 ///Tengo que ver manejos de 
 
 public class Controller{
-
     private Servicio servicio;
 
     public Controller(Servicio servicio) {
@@ -51,8 +50,9 @@ public class Controller{
         app.post("/publicaciones", ctx -> {
 
             ObjectMapper mapper = new ObjectMapper();
-            ///Asegurarme que el form-data tenga "publicacion"
+            ///Tengo que asegurarme que el form-data este como "publicacion"(ver desde el frontend)
             String json = ctx.formParam("publicacion");
+            
             ///Convierto el json a pub usando jackson queeee
             Publicacion pub = mapper.readValue(json, Publicacion.class);
 
@@ -96,7 +96,7 @@ public class Controller{
         });
 
 
-        app.put("/publicaciones/{id}/campo", ctx -> {
+        app.put("/publicaciones/{id}", ctx -> {
 
             String id = ctx.pathParam("id");
             String campo = ctx.queryParam("campo");
