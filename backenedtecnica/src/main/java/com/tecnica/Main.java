@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.jetty.http.HttpTokens.Token;
 
+import com.password4j.Password;
 import com.tecnica.Conexion.ConexionCloud;
 import com.tecnica.Conexion.ConexionMd;
 import com.tecnica.Repositorio.*;
@@ -43,11 +44,13 @@ public class Main {
 
         
         ///Usuario usuarioPrueba = new Usuario("Lautaro", "Sosa", "lautasosita097@gmail.com", "panconqueso12");
-        ///userRep.crear(usuarioPrueba);
         ///userRep.actualizar("Apellido", "68902742078425245974e5e4", "Duarte");
         //userService.crearUsuario(usuarioPrueba);
         ///userService.borrarUser("68902742078425245974e5e4");
-
+        
+        ///Usuario lautaro = userRep.obtUserxCorr("lautasosita097@gmail.com");
+    
+        ///System.out.println(lautaro.getId()+ " "+lautaro.getNombre()+ " "+ lautaro.getApellido() + " " + lautaro.getCorreo());
         
        
          /*
@@ -83,7 +86,8 @@ public class Main {
 
        
 
-        Javalin app = Javalin.create(config -> {
+    
+         Javalin app = Javalin.create(config -> {
                 config.bundledPlugins.enableCors(cors -> {
                     cors.addRule(it -> {
                     it.anyHost();

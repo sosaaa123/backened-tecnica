@@ -35,7 +35,7 @@ public class TokenManager {
         long tAhora = System.currentTimeMillis();//Tiempo actual en milisegundos (Unix Epoch, q locura)
 
         Date ttAhora = new Date(tAhora);
-        Date expirar = new Date(hora);
+        Date expirar = new Date(tAhora + hora);
         
         return Jwts.builder()
             .setSubject(correo)
