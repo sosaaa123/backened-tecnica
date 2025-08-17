@@ -74,9 +74,11 @@ public class UserService {
         ///No creo por ahora implementar esta funcion en el frontened, la pongo para completar y en caso de "emergencia"
         ///Capaz despues borro el metodo actualizar contraseña o agregarle mas metodos de seguridad o hacerlo un metodo aparte
         if(campo.equalsIgnoreCase("Contrasena")){
-            Hash hash = Password.hash(nuevoValor).withPBKDF2();
-            String nValor = hash.getResult();
-            repositorio.actualizar(campo, userId, nValor);
+            String hash = Password.hash(nuevoValor)
+                              .addRandomSalt()
+                              .withPBKDF2()
+                              .getResult();
+            repositorio.actualizar(campo, userId, hash);
         }
         
          else{
