@@ -22,12 +22,11 @@ public class UserService {
         ///Para encriptar contraseña
         String cont = usuario.getContra();
 
-         String hash = Password.hash(cont)
-                          .addRandomSalt(16)
-                          .withPBKDF2()
-                          .getResult();
+         Hash hash = Password.hash(cont)
+                          .addRandomSalt()
+                          .withPBKDF2();
 
-        usuario.setContra(hash);
+        usuario.setContra(hash.getResult());
 
         repositorio.crear(usuario);
     }
