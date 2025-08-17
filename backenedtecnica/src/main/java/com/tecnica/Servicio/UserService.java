@@ -23,7 +23,7 @@ public class UserService {
         String cont = usuario.getContra();
 
          String hash = Password.hash(cont)
-                          .addRandomSalt()
+                          .addRandomSalt(16)
                           .withPBKDF2()
                           .getResult();
 
