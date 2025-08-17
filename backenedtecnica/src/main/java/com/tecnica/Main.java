@@ -87,7 +87,7 @@ public class Main {
        
 
     
-         Javalin app = Javalin.create(config -> {
+        Javalin app = Javalin.create(config -> {
                 config.bundledPlugins.enableCors(cors -> {
                     cors.addRule(it -> {
                     it.anyHost();
@@ -96,6 +96,8 @@ public class Main {
         }).start(8081);
 
         
+
+       
 
         controlador.rutas(app);
         controllerUser.rutas(app);

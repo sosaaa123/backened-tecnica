@@ -39,6 +39,8 @@ public class Controller{
 
         });
 
+        
+
 
         ///Importante: definir bien en el front como va a ser el form-data para recibir los archivos
         ///Primero el Json de la publicacion y luego los archivos bajo el nombre de "Media" asi les puedo hacer un map aca(
