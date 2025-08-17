@@ -21,9 +21,13 @@ public class UserService {
     public void crearUsuario(Usuario usuario){
         ///Para encriptar contraseña
         String cont = usuario.getContra();
-        Hash hash = Password.hash(cont).withPBKDF2();
 
-        usuario.setContra(hash.getResult());
+         String hash = Password.hash(cont)
+                          .addRandomSalt()
+                          .withPBKDF2()
+                          .getResult();
+
+        usuario.setContra(hash);
 
         repositorio.crear(usuario);
     }
