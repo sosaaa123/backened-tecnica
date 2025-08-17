@@ -22,11 +22,10 @@ public class UserService {
         ///Para encriptar contraseña
         String cont = usuario.getContra();
 
-         Hash hash = Password.hash(cont)
-                          .addRandomSalt()
-                          .withPBKDF2();
+         Hash hash = Password.hash(cont).withBcrypt();
+         usuario.setContra(hash.getResult());
 
-        usuario.setContra(hash.getResult());
+        
 
         repositorio.crear(usuario);
     }
@@ -48,7 +47,9 @@ public class UserService {
         }
 
         ///Passwordcheck compara la contraseña q llega con la del usuario encontrado con ese email en PBKDF2 
-        boolean contValidada = Password.check(cont, usuario.getContra()).withPBKDF2();
+        
+        boolean contValidada = Password.check(cont, usuario.getContra()).withBcrypt();
+
 
         if(contValidada){
             return TokenManager.generarToken(correo); ///Retorno el token (ver como lo manejo en el controller)
@@ -73,10 +74,8 @@ public class UserService {
         ///No creo por ahora implementar esta funcion en el frontened, la pongo para completar y en caso de "emergencia"
         ///Capaz despues borro el metodo actualizar contraseña o agregarle mas metodos de seguridad o hacerlo un metodo aparte
         if(campo.equalsIgnoreCase("Contrasena")){
-            String hash = Password.hash(nuevoValor)
-                              .addRandomSalt()
-                              .withPBKDF2()
-                              .getResult();
+            
+            String hash = Password.hash(nuevoValor).withBcrypt().getResult();
             repositorio.actualizar(campo, userId, hash);
         }
         

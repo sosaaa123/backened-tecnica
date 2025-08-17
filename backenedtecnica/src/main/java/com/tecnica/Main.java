@@ -42,16 +42,22 @@ public class Main {
         UserService userService = new UserService(userRep, tokenManager);
         ControllerUser controllerUser = new ControllerUser(userService);
 
+    
         
-        ///Usuario usuarioPrueba = new Usuario("Lautaro", "Sosa", "lautasosita097@gmail.com", "panconqueso12");
+
+        
+        /*Usuario usuarioPrueba = new Usuario("Lautaro", "Sosa", "gabriel24@gmail.com", "mamateamo12");
         ///userRep.actualizar("Apellido", "68902742078425245974e5e4", "Duarte");
-        //userService.crearUsuario(usuarioPrueba);
+        userService.crearUsuario(usuarioPrueba);
         ///userService.borrarUser("68902742078425245974e5e4");
         
-        ///Usuario lautaro = userRep.obtUserxCorr("lautasosita097@gmail.com");
+        Usuario lautaro = userRep.obtUserxCorr("gabriel24@gmail.com");
     
-        ///System.out.println(lautaro.getId()+ " "+lautaro.getNombre()+ " "+ lautaro.getApellido() + " " + lautaro.getCorreo());
+        System.out.println(lautaro.getId()+ " "+lautaro.getNombre()+ " "+ lautaro.getApellido() + " " + lautaro.getCorreo() + " " + lautaro.getContra());
         
+        boolean contValidada = Password.check("mamateamo12", lautaro.getContra()).withBcrypt();
+        
+        System.out.println("ahre? " + contValidada);*/
        
          /*
             List<String> media = new ArrayList<>();
