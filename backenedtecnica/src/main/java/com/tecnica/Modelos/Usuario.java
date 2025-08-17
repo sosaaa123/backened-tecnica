@@ -61,6 +61,10 @@ public class Usuario {
 
     }
 
+    public void setContrasena(String nContrasena){
+        this.contrasena = nContrasena;
+    }
+
     public void setCorreo(String nCorreo){
 
         this.correo = nCorreo;
