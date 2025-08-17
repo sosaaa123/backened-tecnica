@@ -23,6 +23,8 @@ import io.javalin.Javalin;
 ///. Revisar el controller de usuario y borrar los archivos temporales
 ///. Repasar los controllers, implementar en todos ctx.status().result() dependiendo el caso
 ///. Capaz despues borro el metodo actualizar contraseña, agregarle mas metodos de seguridad o hacerlo un metodo aparte
+
+///.Agregar metodo q no permita que se creen dos usuarios con un mismo correo(obtUserXCorreo antes)
 public class Main {
     public static void main(String[] args) {
         ///Creo conexiones
