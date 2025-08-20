@@ -98,6 +98,8 @@ public class Repositorio {
         coleccion.updateOne(filtro, actualizacion);
     }
 
+    
+
     ///Aca para actualizar media(borrar, agregar fotos/videos)
     /// En el frontened mme tengo que enviar una lista que sea el nuevo media(sumando un archivo, restando un archivo, toda actualizada,etc)
     public void actMedia(List<String> nMedia, String pubId) {

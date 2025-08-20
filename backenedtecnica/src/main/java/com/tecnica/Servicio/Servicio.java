@@ -36,6 +36,12 @@ public class Servicio {
         repo.crear(pub);
     }
 
+
+    public Publicacion obtPublxId(String pubId){
+        return repo.obtPublxId(pubId);
+    }
+    
+
     public void borrarPub(String id) {repo.borrarPub(id);}
 
     

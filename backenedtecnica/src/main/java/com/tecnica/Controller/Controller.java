@@ -39,7 +39,14 @@ public class Controller{
 
         });
 
-        
+
+        ////Nueva ruta 18/8 para poder ver cada publicacion a partir del ver-mas
+        app.get("publicaciones/{id}", ctx ->{
+
+            String id = ctx.pathParam(("id"));
+            ctx.json(servicio.obtPublxId(id));
+
+        });
 
 
         ///Importante: definir bien en el front como va a ser el form-data para recibir los archivos
